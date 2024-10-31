@@ -38,12 +38,10 @@ module.exports = (sequelize, DataTypes) => {
       },
       role: {
         type: DataTypes.ENUM('superadmin', 'admin', 'member'),
+        allowNull: false,
         defaultValue: 'member',
         validate: {
-          isRole: {
-            args: [['superadmin', 'admin', 'member']],
-            msg: 'Role is not found',
-          },
+          isIn: [['superadmin', 'admin', 'member']],
         },
       },
       address: {
