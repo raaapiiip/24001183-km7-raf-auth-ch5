@@ -14,6 +14,7 @@ module.exports = {
         plateNumber: faker.vehicle.vrm(),
         price: faker.number.int({ min: 15000, max: 50000 }),
         carImage: faker.image.url(),
+        createdBy: faker.number.int({ min: 1, max: 3}),
         createdAt: new Date(),
         updatedAt: new Date(),
       });
