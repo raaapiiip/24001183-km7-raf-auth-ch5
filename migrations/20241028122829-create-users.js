@@ -27,10 +27,10 @@ module.exports = {
         defaultValue: 'member',
       },
       address: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       phoneNumber: {
-        type: DataTypes.STRING,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
