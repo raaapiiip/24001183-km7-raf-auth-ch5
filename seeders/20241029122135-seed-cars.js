@@ -6,7 +6,7 @@ const { faker } = require('@faker-js/faker');
 module.exports = {
   async up(queryInterface, Sequelize) {
     const cars = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 50; i++) {
       cars.push({
         brand: faker.vehicle.manufacturer(),
         model: faker.vehicle.model(),
