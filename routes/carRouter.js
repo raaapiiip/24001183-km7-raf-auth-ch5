@@ -1,6 +1,8 @@
 const express = require('express');
 const { carController } = require('../controllers');
-const { uploadImage, authenticateToken, authorizeRole } = require('../middlewares');
+const uploadImage = require('../middlewares/uploader');
+const authenticateToken = require('../middlewares/authenticate');
+const authorizeRole = require('../middlewares/authorize');
 
 const router = express.Router();
 
