@@ -1,17 +1,34 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 const { User } = require('../models');
+
+dotenv.config();
 
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({
-      where: {
-        email,
-      },
-    });
+    if (!email || !password) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Email and password are required',
+        isSuccess: false,
+        data: null,
+      });
+    }
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'User not found',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    const isCorrectPassword = await bcrypt.compare(password, user.password);
+    if (!isCorrectPassword) {
       return res.status(401).json({
         status: 'Failed',
         message: 'Invalid email or password',
@@ -20,45 +37,35 @@ const login = async (req, res) => {
       });
     }
 
-    if (user && bcrypt.compareSync(password, user.password)) {
-      const token = jwt.sign(
-        {
+    const token = jwt.sign(
+      {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRED || '1h' }
+    );
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Login successful',
+      isSuccess: true,
+      data: {
+        user: {
           id: user.id,
           name: user.name,
           email: user.email,
           role: user.role,
         },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: process.env.JWT_EXPIRED,
-        },
-      );
-      return res.status(200).json({
-        status: 'Succeed',
-        message: 'Login successful',
-        isSuccess: true,
-        data: {
-          user: {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role,
-          },
-          token,
-        },
-      });
-    } else {
-      return res.status(500).json({
-        status: 'Failed',
-        message: 'Login failed',
-        isSuccess: false,
-        data: null,
-      });
-    }
+        token,
+      },
+    });
   } catch (err) {
-    res.status(404).json({
+    return res.status(500).json({
       status: 'Failed',
-      message: err.message,
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -66,25 +73,56 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
   try {
+    const { email, password, name } = req.body;
+
+    const emailLowerCase = email.toLowerCase();
+
+    const existingUser = await User.findOne({ where: { email: emailLowerCase } });
+    if (existingUser) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Email is already in use',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newUser = await User.create({
       name,
-      email,
+      email: emailLowerCase,
       password: hashedPassword,
       role: 'member',
     });
-    res.status(201).json({
+
+    return res.status(201).json({
       status: 'Succeed',
       message: 'Member registered successfully',
       isSuccess: true,
-      data: { user: newUser },
+      data: {
+        user: {
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          role: newUser.role,
+        },
+      },
     });
   } catch (err) {
-    res.status(500).json({
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Email is already registered',
+        isSuccess: false,
+        data: null,
+      });
+    }
+    
+    return res.status(500).json({
       status: 'Failed',
-      message: err.message,
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -92,33 +130,64 @@ const register = async (req, res) => {
 };
 
 const addAdmin = async (req, res) => {
-  const { name, email, password } = req.body;
   try {
+    const { email, password, name } = req.body;
+
+    const emailLowerCase = email.toLowerCase();
+
+    const existingUser = await User.findOne({ where: { email: emailLowerCase } });
+    if (existingUser) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Email is already in use',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
     const newAdmin = await User.create({
       name,
-      email,
+      email: emailLowerCase,
       password: hashedPassword,
       role: 'admin',
     });
-    res.status(201).json({
+    
+    return res.status(201).json({
       status: 'Succeed',
       message: 'Admin added successfully',
       isSuccess: true,
-      data: { user: newAdmin },
+      data: {
+        user: {
+          id: newAdmin.id,
+          name: newAdmin.name,
+          email: newAdmin.email,
+          role: newAdmin.role,
+        },
+      },
     });
   } catch (err) {
-    res.status(500).json({
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Email is already registered',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    return res.status(500).json({
       status: 'Failed',
-      message: err.message,
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
   }
 };
 
-module.exports = { 
+module.exports = {
   login,
-  register, 
+  register,
   addAdmin,
 };

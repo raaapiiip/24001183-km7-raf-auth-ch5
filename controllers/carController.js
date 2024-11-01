@@ -1,19 +1,28 @@
-const imagekit = require("../lib/imagekit");
-const { Car } = require("../models");
+const imagekit = require('../lib/imagekit');
+const { Car } = require('../models');
 
 const getAllCar = async (req, res) => {
   try {
     const cars = await Car.findAll();
-    res.status(200).json({
-      status: "Succeed",
-      message: "Success to get cars data",
+    if (cars.length === 0) {
+      return res.status(204).json({
+        status: 'Succeed',
+        message: 'No cars found',
+        isSuccess: true,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to get all car data',
       isSuccess: true,
       data: { cars },
     });
   } catch (err) {
-    res.status(500).json({
-      status: "Failed",
-      message: err.message,
+    return res.status(500).json({
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -23,27 +32,35 @@ const getAllCar = async (req, res) => {
 const getCarById = async (req, res) => {
   try {
     const id = req.params.id;
-    const car = await Car.findOne({ where: { id } });
-
-    if (!car) {
-      res.status(404).json({
-        status: "Failed",
-        message: "Car data is not found",
+    if (!id) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Invalid car id',
         isSuccess: false,
         data: null,
       });
     }
 
-    res.status(200).json({
-      status: "Succeed",
-      message: "Success to get car data",
+    const car = await Car.findOne({ where: { id } });
+    if (!car) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Car data not found',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to get car data by id',
       isSuccess: true,
       data: car,
     });
   } catch (err) {
     return res.status(500).json({
-      status: "Failed",
-      message: err.message,
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -51,34 +68,50 @@ const getCarById = async (req, res) => {
 };
 
 const createCar = async (req, res) => {
-  const uploadedImages = [];
-  for (const file of req.files) {
-    const split = file.originalname.split(".");
-    const extension = split[split.length - 1];
-    const filename = split[0];
-
-    const uploadedImage = await imagekit.upload({
-      file: file.buffer,
-      fileName: `Profile-${filename}-${Date.now()}.${extension}`,
+  const file = req.file;
+  if (!file) {
+    return res.status(400).json({ 
+      status: 'Failed',
+      message: 'No file or image uploaded',
+      isSuccess: false,
+      data: null,
     });
-
-    uploadedImages.push(uploadedImage.url);
   }
 
-  const newCar = req.body;
-  try {
-    await Car.create({ ...newCar, images: uploadedImages });
+  const split = file.originalname.split('.');
 
-    res.status(200).json({
-      status: "Succeed",
-      message: "Success to add new car data",
+  const extension = split[split.length - 1];
+
+  const filename = split[0];
+
+  try {
+    const uploadedImage = await imagekit.upload({
+      file : file.buffer,
+      fileName : `Car-${filename}-${Date.now()}.${extension}`
+    });
+
+    const newCar = req.body;
+    if (!newCar.brand || !newCar.model || !newCar.year || !newCar.plateNumber) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Missing required fields',
+        isSuccess: false,
+        data: null,
+      });
+  }
+
+    await Car.create({ ...newCar, carImage: uploadedImage.url });
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to add new car data',
       isSuccess: true,
-      data: { ...newCar, images: uploadedImages },
+      data: { ...newCar, carImage: uploadedImage.url },
     });
   } catch (err) {
-    res.status(500).json({
-      status: "Failed",
-      message: err.message,
+    return res.status(500).json({
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -86,42 +119,43 @@ const createCar = async (req, res) => {
 };
 
 const updateCar = async (req, res) => {
-  const id = req.params.id;
-  const { name, brand, year, price } = req.body;
   try {
+    const id = req.params.id;
+
+    const { brand, model, year, plateNumber } = req.body;
+
     const car = await Car.findByPk(id);
-
-    if (car) {
-      await car.update({ name, brand, year, price, updatedBy: req.user.id });
-
-      res.status(200).json({
-        status: "Succeed",
-        message: "Success to update car data",
-        isSuccess: true,
-        data: { car },
-      });
-    } else if (
-      req.user.id !== car.createdBy &&
-      req.user.role !== "superadmin"
-    ) {
-      res.status(403).json({
-        status: "Failed",
-        message: "Not authorized to update this car",
-        isSuccess: false,
-        data: null,
-      });
-    } else {
-      res.status(404).json({
-        status: "Failed",
-        message: "Car data is not found",
+    if (!car) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Car data is not found',
         isSuccess: false,
         data: null,
       });
     }
+
+    if (req.user.id !== car.createdBy && req.user.role !== 'superadmin') {
+      return res.status(403).json({
+        status: 'Failed',
+        message: 'Not authorized to update this car',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    await car.update({ brand, model, year, plateNumber, updatedBy: req.user.id });
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to update car data',
+      isSuccess: true,
+      data: { car },
+    });
+
   } catch (err) {
-    res.status(500).json({
-      status: "Failed",
-      message: err.message,
+    return res.status(500).json({
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -129,42 +163,41 @@ const updateCar = async (req, res) => {
 };
 
 const deleteCar = async (req, res) => {
-  const id = req.params.id;
   try {
+    const id = req.params.id;
+
     const car = await Car.findByPk(id);
-
-    if (car) {
-      await car.update({ deletedBy: req.user.id });
-      await car.destroy();
-
-      res.status(200).json({
-        status: "Succeed",
-        message: "Success to delete car data",
-        isSuccess: true,
-        data: { car },
-      });
-    } else if (
-      req.user.id !== car.createdBy &&
-      req.user.role !== "superadmin"
-    ) {
-      res.status(403).json({
-        status: "Failed",
-        message: "Not authorized to update this car",
-        isSuccess: true,
-        data: null,
-      });
-    } else {
-      res.status(404).json({
-        status: "Failed",
-        message: "Car data is not found",
-        isSuccess: true,
+    if (!car) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'Car data not found',
+        isSuccess: false,
         data: null,
       });
     }
+
+    if (req.user.id !== car.createdBy && req.user.role !== 'superadmin') {
+      return res.status(403).json({
+        status: 'Failed',
+        message: 'Not authorized to delete this car data',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    await car.update({ deletedBy: req.user.id });
+    await car.destroy();
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to delete car data',
+      isSuccess: true,
+      data: { car },
+    });
   } catch (err) {
-    res.status(500).json({
-      status: "Failed",
-      message: err.message,
+    return res.status(500).json({
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });

@@ -1,18 +1,27 @@
-const { User } = require("../models");
+const { User } = require('../models');
 
 const getAllUser = async (req, res) => {
   try {
     const users = await User.findAll();
-    res.status(200).json({
-      status: "Succeed",
-      message: "Success to get users data",
+    if (users.length === 0) {
+      return res.status(204).json({
+        status: 'Succeed',
+        message: 'No users found',
+        isSuccess: true,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to get all user data',
       isSuccess: true,
       data: { users },
     });
   } catch (err) {
-    res.status(500).json({
-      status: "Failed",
-      message: err.message,
+    return res.status(500).json({
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });
@@ -22,27 +31,36 @@ const getAllUser = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await User.findOne({ where: { id } });
-
-    if (!user) {
-      res.status(404).json({
-        status: "Failed",
-        message: "User data is not found",
+    if (!id) {
+      return res.status(400).json({
+        status: 'Failed',
+        message: 'Invalid user id',
         isSuccess: false,
         data: null,
       });
     }
 
-    res.status(200).json({
-      status: "Succeed",
-      message: "Success to get user data",
+    const user = await User.findOne({ where: { id } });
+
+    if (!user) {
+      return res.status(404).json({
+        status: 'Failed',
+        message: 'User data not found',
+        isSuccess: false,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: 'Succeed',
+      message: 'Success to get user data by id',
       isSuccess: true,
-      data: car,
+      data: user,
     });
   } catch (err) {
     return res.status(500).json({
-      status: "Failed",
-      message: err.message,
+      status: 'Failed',
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });

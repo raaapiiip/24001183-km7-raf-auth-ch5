@@ -1,6 +1,7 @@
 'use strict';
 const { Model } = require('sequelize');
 const bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
@@ -8,13 +9,16 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Car, { foreignKey: 'updatedBy', as: 'updatedCars' });
       User.hasMany(models.Car, { foreignKey: 'deletedBy', as: 'deletedCars' });
     }
+
     static async hashPassword(password) {
       return await bcrypt.hash(password, 10);
     }
+
     async comparePassword(password) {
       return await bcrypt.compare(password, this.password);
     }
   }
+
   User.init(
     {
       email: {
@@ -35,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          notEmpty: true,
+        },
       },
       role: {
         type: DataTypes.ENUM('superadmin', 'admin', 'member'),
@@ -46,19 +53,23 @@ module.exports = (sequelize, DataTypes) => {
       },
       address: {
         type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          len: [0, 255],
+        },
       },
       phoneNumber: {
         type: DataTypes.STRING,
+        allowNull: true,
+        validate: {
+          isNumeric: true,
+          len: [10, 15],
+        },
       },
     },
     {
       sequelize,
       modelName: 'User',
-      hooks: {
-        beforeCreate: async (user) => {
-          user.password = await User.hashPassword(user.password);
-        },
-      },
     }
   );
   return User;
