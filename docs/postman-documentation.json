@@ -1,0 +1,2476 @@
+{
+	"info": {
+		"_postman_id": "be9da343-6090-4d84-aec6-ea98cc8fca67",
+		"name": "Binar Car Rental (BCR) - Chapter 5 Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38691790"
+	},
+	"item": [
+		{
+			"name": "Auths",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"membertony@mail.com\",\r\n    \"password\": \"punyasiapa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/auths/login"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"rafif@mail.com\",\r\n    \"password\": \"punyasiapa\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "431"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1af-jQsIppL/HPffP18mGClynSk1+UU\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:32:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Login successful\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"Muhammad Rafif Ramadhansyah\",\n            \"email\": \"rafif@mail.com\",\n            \"role\": \"superadmin\"\n        },\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6Ik11aGFtbWFkIFJhZmlmIFJhbWFkaGFuc3lhaCIsImVtYWlsIjoicmFmaWZAbWFpbC5jb20iLCJyb2xlIjoic3VwZXJhZG1pbiIsImlhdCI6MTczMDUyMTkyOSwiZXhwIjoxNzMwNTI1NTI5fQ.79sPTNoaIboas1fNn2wnKvJwVFfHkcCCa-ymORPiLgI\"\n    }\n}"
+						},
+						{
+							"name": "400 - Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"\",\r\n    \"password\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/login"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "93"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5d-CL4RDYpGtV1WBJ6+HbdaE6tJY+A\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:32:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Email and password are required\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"tidakada@mail.com\",\r\n    \"password\": \"tidakada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/login"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "76"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4c-Hv7vrGVA+WZ66DTXnnOBFAViOcc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:34:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"User not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"rafif@mail.com\",\r\n    \"password\": \"passwordsalah123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/login"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-YLrep30DdMgCVNQS/9HAtdQh1W0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:34:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Invalid email or password\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"farrelkeriting@mail.com\",\r\n    \"password\": \"farrelkeriting123\",\r\n    \"name\": \"Farrel\",\r\n    \"address\": \"Borneo\",\r\n    \"phoneNumber\": 1234567890\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/auths/register"
+					},
+					"response": [
+						{
+							"name": "400 - Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"mahendracerdas@mail.com\",\r\n    \"password\": \"daftarakun12345\",\r\n    \"name\": \"Mahendra\",\r\n    \"address\": \"Semarang\",\r\n    \"phoneNumber\": 1234567890\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/register"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-/E5NuiWnhUcE/59/AtZ8UiTFLEM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:48:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Email is already in use\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"farrelkeriting@mail.com\",\r\n    \"password\": \"farrelkeriting123\",\r\n    \"name\": \"Farrel\",\r\n    \"address\": \"Borneo\",\r\n    \"phoneNumber\": 1234567890\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/register"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "358"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"166-okc7P+2wkHWpsw7fBlnf81DVcUg\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:56:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Member registered successfully\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": 13,\n            \"name\": \"Farrel\",\n            \"email\": \"farrelkeriting@mail.com\",\n            \"password\": \"$2a$10$HKrQXBC0mooDX2of8YwtC.1zAC1bY/PoqogUsxSY5JYPLTxtT6y4.\",\n            \"role\": \"member\",\n            \"updatedAt\": \"2024-11-02T04:56:44.422Z\",\n            \"createdAt\": \"2024-11-02T04:56:44.422Z\",\n            \"address\": null,\n            \"phoneNumber\": null\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Add Admin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"antonygasing@mail.com\",\r\n    \"password\": \"kelok100juta\",\r\n    \"name\": \"Antony\",\r\n    \"address\": \"Manchester\",\r\n    \"phoneNumber\": 1234554321\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/auths/add-admin"
+					},
+					"response": [
+						{
+							"name": "201 - Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"antonygasing@mail.com\",\r\n    \"password\": \"kelok100juta\",\r\n    \"name\": \"Antony\",\r\n    \"address\": \"Manchester\",\r\n    \"phoneNumber\": 1234554321\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/add-admin"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "349"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15d-hCjfwYHvFrLnBKoEj3VvpWQDFOc\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:55:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Admin added successfully\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"user\": {\n            \"id\": 12,\n            \"name\": \"Antony\",\n            \"email\": \"antonygasing@mail.com\",\n            \"password\": \"$2a$10$JJ6/1V2HFIk3UT56N4NNPOh8HOtYJPzH5l2uKpRIG6Jm/JBZAj2Hu\",\n            \"role\": \"admin\",\n            \"updatedAt\": \"2024-11-02T04:55:32.030Z\",\n            \"createdAt\": \"2024-11-02T04:55:32.030Z\",\n            \"address\": null,\n            \"phoneNumber\": null\n        }\n    }\n}"
+						},
+						{
+							"name": "400 - Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"antonygasing@mail.com\",\r\n    \"password\": \"kelok100juta\",\r\n    \"name\": \"Antony\",\r\n    \"address\": \"Manchester\",\r\n    \"phoneNumber\": 1234554321\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/add-admin"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-/E5NuiWnhUcE/59/AtZ8UiTFLEM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:57:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Email is already in use\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"antonygasing@mail.com\",\r\n    \"password\": \"kelok100juta\",\r\n    \"name\": \"Antony\",\r\n    \"address\": \"Manchester\",\r\n    \"phoneNumber\": 1234554321\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/auths/add-admin"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 07:58:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Get all car data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/cars"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15130"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b1a-HzfIqa6FqxSuf2kvbX+Fvap/xAk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:57:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to get all car data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"cars\": [\n            {\n                \"id\": 1,\n                \"brand\": \"Mercedes Benz\",\n                \"model\": \"Grand Cherokee\",\n                \"year\": 2024,\n                \"plateNumber\": \"CR54QBO\",\n                \"price\": 41281,\n                \"carImage\": \"https://loremflickr.com/1399/3626?lock=6378379522081367\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.306Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.306Z\"\n            },\n            {\n                \"id\": 2,\n                \"brand\": \"MG\",\n                \"model\": \"XC90\",\n                \"year\": 2024,\n                \"plateNumber\": \"ZI77BOX\",\n                \"price\": 31684,\n                \"carImage\": \"https://picsum.photos/seed/HIumLPtkX/3566/2869\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 3,\n                \"brand\": \"Citroën\",\n                \"model\": \"Golf\",\n                \"year\": 2024,\n                \"plateNumber\": \"IO30BZX\",\n                \"price\": 17932,\n                \"carImage\": \"https://loremflickr.com/1450/599?lock=4571316672877029\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 4,\n                \"brand\": \"NIO\",\n                \"model\": \"Model X\",\n                \"year\": 2024,\n                \"plateNumber\": \"OF15ANF\",\n                \"price\": 18749,\n                \"carImage\": \"https://loremflickr.com/720/2502?lock=917789372497938\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 5,\n                \"brand\": \"Cadillac\",\n                \"model\": \"Ranchero\",\n                \"year\": 2024,\n                \"plateNumber\": \"UD37IKU\",\n                \"price\": 37779,\n                \"carImage\": \"https://loremflickr.com/2551/260?lock=6197587919031683\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 6,\n                \"brand\": \"Bentley\",\n                \"model\": \"Volt\",\n                \"year\": 2024,\n                \"plateNumber\": \"XF50AEY\",\n                \"price\": 24830,\n                \"carImage\": \"https://loremflickr.com/3091/1491?lock=1856540154847047\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 7,\n                \"brand\": \"MG\",\n                \"model\": \"Charger\",\n                \"year\": 2024,\n                \"plateNumber\": \"FZ70VXP\",\n                \"price\": 48780,\n                \"carImage\": \"https://loremflickr.com/524/1979?lock=5632695374288617\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 8,\n                \"brand\": \"Audi\",\n                \"model\": \"Camaro\",\n                \"year\": 2024,\n                \"plateNumber\": \"GA98TLT\",\n                \"price\": 40261,\n                \"carImage\": \"https://picsum.photos/seed/zZ2F73U/2563/2360\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 9,\n                \"brand\": \"Maserati\",\n                \"model\": \"Sentra\",\n                \"year\": 2024,\n                \"plateNumber\": \"RF42APV\",\n                \"price\": 30415,\n                \"carImage\": \"https://picsum.photos/seed/kS65bO8/2604/3262\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 10,\n                \"brand\": \"Maserati\",\n                \"model\": \"ATS\",\n                \"year\": 2023,\n                \"plateNumber\": \"LA63HMC\",\n                \"price\": 48925,\n                \"carImage\": \"https://picsum.photos/seed/TcCjLqMI/2574/2888\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 11,\n                \"brand\": \"Maserati\",\n                \"model\": \"Model Y\",\n                \"year\": 2024,\n                \"plateNumber\": \"MQ93TZM\",\n                \"price\": 40305,\n                \"carImage\": \"https://picsum.photos/seed/z4FHMLsYS6/1638/1404\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 12,\n                \"brand\": \"Tesla\",\n                \"model\": \"Model Y\",\n                \"year\": 2024,\n                \"plateNumber\": \"UT66KEE\",\n                \"price\": 42380,\n                \"carImage\": \"https://loremflickr.com/3623/1359?lock=6058603817343977\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 13,\n                \"brand\": \"Jaguar\",\n                \"model\": \"Mercielago\",\n                \"year\": 2024,\n                \"plateNumber\": \"SO51VKH\",\n                \"price\": 27084,\n                \"carImage\": \"https://picsum.photos/seed/aNDpNYfw/1634/1466\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 14,\n                \"brand\": \"Maruti\",\n                \"model\": \"Alpine\",\n                \"year\": 2024,\n                \"plateNumber\": \"TC74BLQ\",\n                \"price\": 28359,\n                \"carImage\": \"https://loremflickr.com/337/98?lock=6061170590148802\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 15,\n                \"brand\": \"Smart\",\n                \"model\": \"Altima\",\n                \"year\": 2024,\n                \"plateNumber\": \"DU46TPV\",\n                \"price\": 32957,\n                \"carImage\": \"https://picsum.photos/seed/yLYr8/932/3702\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n            },\n            {\n                \"id\": 16,\n                \"brand\": \"Ferrari\",\n                \"model\": \"Ranchero\",\n                \"year\": 2024,\n                \"plateNumber\": \"NH91DZU\",\n                \"price\": 31577,\n                \"carImage\": \"https://picsum.photos/seed/Hd2VN88/2081/2346\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 17,\n                \"brand\": \"Maserati\",\n                \"model\": \"Aventador\",\n                \"year\": 2024,\n                \"plateNumber\": \"DK48NVC\",\n                \"price\": 37417,\n                \"carImage\": \"https://loremflickr.com/766/3428?lock=7920099336612402\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 18,\n                \"brand\": \"MG\",\n                \"model\": \"Mustang\",\n                \"year\": 2024,\n                \"plateNumber\": \"CN18UUP\",\n                \"price\": 18043,\n                \"carImage\": \"https://picsum.photos/seed/BazBe0q5vm/2124/3859\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 19,\n                \"brand\": \"Nissan\",\n                \"model\": \"A4\",\n                \"year\": 2024,\n                \"plateNumber\": \"YL91NNU\",\n                \"price\": 28235,\n                \"carImage\": \"https://picsum.photos/seed/UpPnuEdi/1562/884\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 20,\n                \"brand\": \"Toyota\",\n                \"model\": \"Expedition\",\n                \"year\": 2024,\n                \"plateNumber\": \"CY26WGO\",\n                \"price\": 46184,\n                \"carImage\": \"https://loremflickr.com/2526/1485?lock=6813737931457220\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 21,\n                \"brand\": \"Tata\",\n                \"model\": \"Expedition\",\n                \"year\": 2024,\n                \"plateNumber\": \"DM72FFZ\",\n                \"price\": 29144,\n                \"carImage\": \"https://picsum.photos/seed/NqMb4kx/2162/2248\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 22,\n                \"brand\": \"Tesla\",\n                \"model\": \"Taurus\",\n                \"year\": 2023,\n                \"plateNumber\": \"AU43MWO\",\n                \"price\": 41134,\n                \"carImage\": \"https://picsum.photos/seed/w665G5oRBJ/2881/2143\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 23,\n                \"brand\": \"Hyundai\",\n                \"model\": \"Malibu\",\n                \"year\": 2024,\n                \"plateNumber\": \"JE78EQS\",\n                \"price\": 15387,\n                \"carImage\": \"https://picsum.photos/seed/v3Zrl/3609/2693\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 24,\n                \"brand\": \"Maruti\",\n                \"model\": \"PT Cruiser\",\n                \"year\": 2024,\n                \"plateNumber\": \"XA94CHZ\",\n                \"price\": 24869,\n                \"carImage\": \"https://loremflickr.com/2016/1561?lock=4102788856520126\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 25,\n                \"brand\": \"Maruti\",\n                \"model\": \"Wrangler\",\n                \"year\": 2024,\n                \"plateNumber\": \"DK86HAP\",\n                \"price\": 31336,\n                \"carImage\": \"https://picsum.photos/seed/NJUfL2A/1188/1163\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 26,\n                \"brand\": \"Peugeot\",\n                \"model\": \"Colorado\",\n                \"year\": 2023,\n                \"plateNumber\": \"CQ45DJI\",\n                \"price\": 24074,\n                \"carImage\": \"https://loremflickr.com/237/429?lock=8861072659372487\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 27,\n                \"brand\": \"Cadillac\",\n                \"model\": \"F-150\",\n                \"year\": 2024,\n                \"plateNumber\": \"YT67AHF\",\n                \"price\": 27768,\n                \"carImage\": \"https://picsum.photos/seed/556V1VHXi9/668/1862\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 28,\n                \"brand\": \"Ferrari\",\n                \"model\": \"Altima\",\n                \"year\": 2024,\n                \"plateNumber\": \"MG21XCG\",\n                \"price\": 29232,\n                \"carImage\": \"https://picsum.photos/seed/60wiOC/1700/2299\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 29,\n                \"brand\": \"Volkswagen\",\n                \"model\": \"LeBaron\",\n                \"year\": 2024,\n                \"plateNumber\": \"KQ72KEP\",\n                \"price\": 36903,\n                \"carImage\": \"https://loremflickr.com/2247/1007?lock=3071252685859331\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 30,\n                \"brand\": \"Citroën\",\n                \"model\": \"A4\",\n                \"year\": 2023,\n                \"plateNumber\": \"JS77VXJ\",\n                \"price\": 39859,\n                \"carImage\": \"https://picsum.photos/seed/L49Ido/1938/140\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 31,\n                \"brand\": \"Rivian\",\n                \"model\": \"Expedition\",\n                \"year\": 2024,\n                \"plateNumber\": \"JH77ZBM\",\n                \"price\": 27017,\n                \"carImage\": \"https://picsum.photos/seed/UKqZ7h/2764/3769\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 32,\n                \"brand\": \"Mini\",\n                \"model\": \"1\",\n                \"year\": 2024,\n                \"plateNumber\": \"UJ32YQH\",\n                \"price\": 39925,\n                \"carImage\": \"https://loremflickr.com/368/931?lock=5332086507838172\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 33,\n                \"brand\": \"Mini\",\n                \"model\": \"Model Y\",\n                \"year\": 2024,\n                \"plateNumber\": \"QL36HZF\",\n                \"price\": 18794,\n                \"carImage\": \"https://picsum.photos/seed/sE33UWhin8/2115/2516\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 34,\n                \"brand\": \"Ferrari\",\n                \"model\": \"Sentra\",\n                \"year\": 2023,\n                \"plateNumber\": \"JD07NLT\",\n                \"price\": 29064,\n                \"carImage\": \"https://loremflickr.com/2559/1696?lock=3593307943481258\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 35,\n                \"brand\": \"Volvo\",\n                \"model\": \"Sentra\",\n                \"year\": 2024,\n                \"plateNumber\": \"CT34CPY\",\n                \"price\": 39511,\n                \"carImage\": \"https://picsum.photos/seed/lv7X1PLPS/2920/2457\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 36,\n                \"brand\": \"Tesla\",\n                \"model\": \"Civic\",\n                \"year\": 2024,\n                \"plateNumber\": \"YW80CZT\",\n                \"price\": 40044,\n                \"carImage\": \"https://picsum.photos/seed/XIymJOHV3/3986/2496\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 37,\n                \"brand\": \"Lamborghini\",\n                \"model\": \"El Camino\",\n                \"year\": 2024,\n                \"plateNumber\": \"LJ55AJL\",\n                \"price\": 42301,\n                \"carImage\": \"https://picsum.photos/seed/JeXTZKdl/553/2709\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 38,\n                \"brand\": \"Land Rover\",\n                \"model\": \"Beetle\",\n                \"year\": 2024,\n                \"plateNumber\": \"AM61AFQ\",\n                \"price\": 23693,\n                \"carImage\": \"https://picsum.photos/seed/CesJmldT2/3559/323\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 39,\n                \"brand\": \"Chevrolet\",\n                \"model\": \"A8\",\n                \"year\": 2024,\n                \"plateNumber\": \"AI24FGQ\",\n                \"price\": 48414,\n                \"carImage\": \"https://loremflickr.com/3878/304?lock=8976005955631725\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.308Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.308Z\"\n            },\n            {\n                \"id\": 40,\n                \"brand\": \"Volvo\",\n                \"model\": \"Grand Caravan\",\n                \"year\": 2024,\n                \"plateNumber\": \"XK15CSQ\",\n                \"price\": 26223,\n                \"carImage\": \"https://picsum.photos/seed/Ucdwqoigh/1098/3444\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 41,\n                \"brand\": \"Dodge\",\n                \"model\": \"LeBaron\",\n                \"year\": 2024,\n                \"plateNumber\": \"YG99KNX\",\n                \"price\": 17324,\n                \"carImage\": \"https://loremflickr.com/2316/2607?lock=1626796360016669\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 42,\n                \"brand\": \"Lamborghini\",\n                \"model\": \"Mercielago\",\n                \"year\": 2024,\n                \"plateNumber\": \"QW72UGE\",\n                \"price\": 17249,\n                \"carImage\": \"https://loremflickr.com/1711/868?lock=618422208349531\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 43,\n                \"brand\": \"Ferrari\",\n                \"model\": \"Accord\",\n                \"year\": 2024,\n                \"plateNumber\": \"SZ50GXV\",\n                \"price\": 24010,\n                \"carImage\": \"https://loremflickr.com/386/751?lock=958353927946718\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 44,\n                \"brand\": \"Mahindra & Mahindra\",\n                \"model\": \"911\",\n                \"year\": 2024,\n                \"plateNumber\": \"XN28CRD\",\n                \"price\": 46380,\n                \"carImage\": \"https://picsum.photos/seed/nr7vFVcw/2617/2986\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 45,\n                \"brand\": \"Ford\",\n                \"model\": \"Camry\",\n                \"year\": 2024,\n                \"plateNumber\": \"XY23CGX\",\n                \"price\": 39425,\n                \"carImage\": \"https://picsum.photos/seed/Dpl8dJ/2382/3191\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 46,\n                \"brand\": \"Tesla\",\n                \"model\": \"Expedition\",\n                \"year\": 2024,\n                \"plateNumber\": \"LZ37QWP\",\n                \"price\": 42401,\n                \"carImage\": \"https://loremflickr.com/2143/3792?lock=6769287407640560\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 47,\n                \"brand\": \"Polestar\",\n                \"model\": \"Charger\",\n                \"year\": 2024,\n                \"plateNumber\": \"SY79XSH\",\n                \"price\": 37014,\n                \"carImage\": \"https://picsum.photos/seed/IiRezn/265/2369\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 48,\n                \"brand\": \"Land Rover\",\n                \"model\": \"El Camino\",\n                \"year\": 2024,\n                \"plateNumber\": \"OF40PYQ\",\n                \"price\": 48852,\n                \"carImage\": \"https://picsum.photos/seed/2BT4gA/1817/1683\",\n                \"createdBy\": 3,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 49,\n                \"brand\": \"Skoda\",\n                \"model\": \"Camaro\",\n                \"year\": 2024,\n                \"plateNumber\": \"OH60EGV\",\n                \"price\": 26100,\n                \"carImage\": \"https://loremflickr.com/381/1018?lock=327905510452968\",\n                \"createdBy\": 1,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            },\n            {\n                \"id\": 50,\n                \"brand\": \"BYD\",\n                \"model\": \"Model 3\",\n                \"year\": 2024,\n                \"plateNumber\": \"OT29RWG\",\n                \"price\": 25583,\n                \"carImage\": \"https://picsum.photos/seed/ZDLLpGD/3872/2686\",\n                \"createdBy\": 2,\n                \"updatedBy\": null,\n                \"deletedBy\": null,\n                \"deletedAt\": null,\n                \"createdAt\": \"2024-11-02T04:31:11.309Z\",\n                \"updatedAt\": \"2024-11-02T04:31:11.309Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:03:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get car data by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/cars/51"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/2"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "376"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"178-dV2IL9mdt14CgHwbzPyBYiprD7I\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:58:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to get car data by id\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"id\": 2,\n        \"brand\": \"MG\",\n        \"model\": \"XC90\",\n        \"year\": 2024,\n        \"plateNumber\": \"ZI77BOX\",\n        \"price\": 31684,\n        \"carImage\": \"https://picsum.photos/seed/HIumLPtkX/3566/2869\",\n        \"createdBy\": 2,\n        \"updatedBy\": null,\n        \"deletedBy\": null,\n        \"deletedAt\": null,\n        \"createdAt\": \"2024-11-02T04:31:11.307Z\",\n        \"updatedAt\": \"2024-11-02T04:31:11.307Z\"\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-zNmIgFmK5U5jmVhSFbXhRO0MfZo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 04:59:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Car data not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:04:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Create car data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "carImage",
+									"type": "file",
+									"src": "postman-cloud:///1ef87d45-8e08-43a0-b93b-878791080995"
+								},
+								{
+									"key": "brand",
+									"value": "Toyota",
+									"type": "text"
+								},
+								{
+									"key": "model",
+									"value": "Veloz",
+									"type": "text"
+								},
+								{
+									"key": "year",
+									"value": "2023",
+									"type": "text"
+								},
+								{
+									"key": "plateNumber",
+									"value": "PB12ABC",
+									"type": "text"
+								},
+								{
+									"key": "createdBy",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{base_url}}/cars"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "carImage",
+											"type": "file",
+											"src": "/C:/Users/LENOVO/Pictures/Screenshot 2024-06-02 201801.png"
+										},
+										{
+											"key": "brand",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "Veloz",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "plateNumber",
+											"value": "PB12ABC",
+											"type": "text"
+										},
+										{
+											"key": "createdBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/cars"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "284"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"11c-LK90rVn8YqAA/EIHwuNe+5bFDMA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 06:58:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to add new car data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"brand\": \"Toyota\",\n        \"model\": \"Veloz\",\n        \"year\": \"2023\",\n        \"plateNumber\": \"PB12ABC\",\n        \"createdBy\": \"1\",\n        \"carImage\": \"https://ik.imagekit.io/raaapiiip/Profile-Screenshot_2024-06-02_201801-1730444284371_AhHZQxYdd.png\"\n    }\n}"
+						},
+						{
+							"name": "400 - Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "carImage",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "brand",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "Veloz",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "plateNumber",
+											"value": "PB12ABC",
+											"type": "text"
+										},
+										{
+											"key": "createdBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/cars"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "87"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"57-nAXpZkVXcY+jzwiZWcncGcLDfCM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 05:00:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"No file or image uploaded\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "400 - Bad Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "carImage",
+											"type": "file",
+											"src": "postman-cloud:///1ef87d45-8e08-43a0-b93b-878791080995"
+										},
+										{
+											"key": "brand",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "Veloz",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "plateNumber",
+											"value": "PB12ABC",
+											"type": "text"
+										},
+										{
+											"key": "createdBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/cars"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"55-4kgTclrnZej1FBGYpe0lCEMyVA0\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 05:01:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Missing required fields\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "carImage",
+											"type": "file",
+											"src": "postman-cloud:///1ef87d45-8e08-43a0-b93b-878791080995"
+										},
+										{
+											"key": "brand",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "Veloz",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "plateNumber",
+											"value": "PB12ABC",
+											"type": "text"
+										},
+										{
+											"key": "createdBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/cars"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:00:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "carImage",
+											"type": "file",
+											"src": "postman-cloud:///1ef87d45-8e08-43a0-b93b-878791080995"
+										},
+										{
+											"key": "brand",
+											"value": "Toyota",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "Veloz",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2023",
+											"type": "text"
+										},
+										{
+											"key": "plateNumber",
+											"value": "PB12ABC",
+											"type": "text"
+										},
+										{
+											"key": "createdBy",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{base_url}}/cars"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:04:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Update car data",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"brand\": \"Daihatsu\",\r\n    \"model\": \"Xenia\",\r\n    \"year\": 2021,\r\n    \"plateNumber\": \"PB45DCG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/cars/51"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"brand\": \"Daihatsu\",\r\n    \"model\": \"Xenia\",\r\n    \"year\": 2021,\r\n    \"plateNumber\": \"PB45DCG\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "419"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a3-Vri5RoppVeF0SIkbid8rkDs3o+k\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 07:05:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to update car data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"car\": {\n            \"id\": 51,\n            \"brand\": \"Daihatsu\",\n            \"model\": \"Xenia\",\n            \"year\": 2021,\n            \"plateNumber\": \"PB45DCG\",\n            \"price\": null,\n            \"carImage\": \"https://ik.imagekit.io/raaapiiip/Profile-Screenshot_2024-06-02_201801-1730444284371_AhHZQxYdd.png\",\n            \"createdBy\": 1,\n            \"updatedBy\": 1,\n            \"deletedBy\": null,\n            \"createdAt\": \"2024-11-01T06:58:06.911Z\",\n            \"updatedAt\": \"2024-11-01T07:05:10.634Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"brand\": \"Daihatsu\",\r\n    \"model\": \"Xenia\",\r\n    \"year\": 2021,\r\n    \"plateNumber\": \"PB45DCG\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-h2zp1PO2z9ugnZQtudaYPx32YCQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 05:01:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Car data is not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"brand\": \"Daihatsu\",\r\n    \"model\": \"Xenia\",\r\n    \"year\": 2021,\r\n    \"plateNumber\": \"PB45DCG\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:01:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"brand\": \"Daihatsu\",\r\n    \"model\": \"Xenia\",\r\n    \"year\": 2021,\r\n    \"plateNumber\": \"PB45DCG\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:04:40 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove car data",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/cars/53"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "416"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a0-9WO78LS3SyzWbUttG/UkEEpl/2Y\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 07:06:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to delete car data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"car\": {\n            \"id\": 51,\n            \"brand\": \"Daihatsu\",\n            \"model\": \"Xenia\",\n            \"year\": 2021,\n            \"plateNumber\": \"PB45DCG\",\n            \"price\": null,\n            \"carImage\": \"https://ik.imagekit.io/raaapiiip/Profile-Screenshot_2024-06-02_201801-1730444284371_AhHZQxYdd.png\",\n            \"createdBy\": 1,\n            \"updatedBy\": 1,\n            \"deletedBy\": 1,\n            \"createdAt\": \"2024-11-01T06:58:06.911Z\",\n            \"updatedAt\": \"2024-11-01T07:06:41.122Z\"\n        }\n    }\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/51"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:02:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/53"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "80"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"50-zNmIgFmK5U5jmVhSFbXhRO0MfZo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:03:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Car data not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/cars/53"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:04:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all user data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1743"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6cf-eTV9d5TMySy12RHN8btarz3HFOM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 07:13:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to get users data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"users\": [\n            {\n                \"id\": 1,\n                \"email\": \"rafifrmd@mail.com\",\n                \"password\": \"$2a$10$X59zggVrr0c3klfdXZmMquC8w8OGK7P.Uz91S4J4bLkrI8G9m7tce\",\n                \"name\": \"Muhammad Rafif Ramadhansyah\",\n                \"role\": \"superadmin\",\n                \"address\": \"Indonesia\",\n                \"phoneNumber\": \"0123456789\",\n                \"createdAt\": \"2024-10-31T17:11:55.268Z\",\n                \"updatedAt\": \"2024-10-31T17:11:55.268Z\"\n            },\n            {\n                \"id\": 2,\n                \"email\": \"adminbcr@mail.com\",\n                \"password\": \"$2a$10$X59zggVrr0c3klfdXZmMquC8w8OGK7P.Uz91S4J4bLkrI8G9m7tce\",\n                \"name\": \"Yoga Hernawan\",\n                \"role\": \"admin\",\n                \"address\": \"Indonesia\",\n                \"phoneNumber\": \"9876543210\",\n                \"createdAt\": \"2024-10-31T17:11:55.268Z\",\n                \"updatedAt\": \"2024-10-31T17:11:55.268Z\"\n            },\n            {\n                \"id\": 3,\n                \"email\": \"memberbcr@mail.com\",\n                \"password\": \"$2a$10$X59zggVrr0c3klfdXZmMquC8w8OGK7P.Uz91S4J4bLkrI8G9m7tce\",\n                \"name\": \"Tony Budi Santoso\",\n                \"role\": \"member\",\n                \"address\": \"Indonesia\",\n                \"phoneNumber\": \"9876543210\",\n                \"createdAt\": \"2024-10-31T17:11:55.268Z\",\n                \"updatedAt\": \"2024-10-31T17:11:55.268Z\"\n            },\n            {\n                \"id\": 4,\n                \"email\": \"windahyoutube@mail.com\",\n                \"password\": \"$2a$10$PK5BytCSyJ3dCmc2.5K42OwD6n.wvlV0kV66hYYyXs5aELDk08oIS\",\n                \"name\": \"Windah Batubara\",\n                \"role\": \"member\",\n                \"address\": null,\n                \"phoneNumber\": null,\n                \"createdAt\": \"2024-10-31T17:25:26.485Z\",\n                \"updatedAt\": \"2024-10-31T17:25:26.485Z\"\n            },\n            {\n                \"id\": 5,\n                \"email\": \"testing@mail.com\",\n                \"password\": \"$2a$10$PiBvprJnyaSWlyKqJGSopuudkBa55Fwgc5f1xgZNmgPVh1zn83rH.\",\n                \"name\": \"Susanto\",\n                \"role\": \"member\",\n                \"address\": null,\n                \"phoneNumber\": null,\n                \"createdAt\": \"2024-11-01T03:53:02.252Z\",\n                \"updatedAt\": \"2024-11-01T03:53:02.252Z\"\n            },\n            {\n                \"id\": 6,\n                \"email\": \"dewasiadmin@mail.com\",\n                \"password\": \"$2a$10$XWLPwtuexAt0NRs9urQykuUwYPQnYd0hYleI1L/Ttj99lQU0fspbC\",\n                \"name\": \"Manusia Setengah Dewa\",\n                \"role\": \"admin\",\n                \"address\": null,\n                \"phoneNumber\": null,\n                \"createdAt\": \"2024-11-01T06:14:35.369Z\",\n                \"updatedAt\": \"2024-11-01T06:14:35.369Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:08:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/users",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": null,
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:12:28 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				},
+				{
+					"name": "Get user data by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/users/1"
+					},
+					"response": [
+						{
+							"name": "200 - OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/users/6"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "353"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"161-nZ7UAxrvxz5Kyd8GrYjE6cC7dfU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 01 Nov 2024 07:15:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Succeed\",\n    \"message\": \"Success to get user data\",\n    \"isSuccess\": true,\n    \"data\": {\n        \"id\": 6,\n        \"email\": \"dewasiadmin@mail.com\",\n        \"password\": \"$2a$10$XWLPwtuexAt0NRs9urQykuUwYPQnYd0hYleI1L/Ttj99lQU0fspbC\",\n        \"name\": \"Manusia Setengah Dewa\",\n        \"role\": \"admin\",\n        \"address\": null,\n        \"phoneNumber\": null,\n        \"createdAt\": \"2024-11-01T06:14:35.369Z\",\n        \"updatedAt\": \"2024-11-01T06:14:35.369Z\"\n    }\n}"
+						},
+						{
+							"name": "401 - Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/users/6"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "95"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5f-P8/b5wkk6gGdJpKQ47HrqN7zzo4\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:08:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. No token provided.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "404 - Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/users/23"
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "81"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"51-oLPtNYCDF6V+DRwj35I47wcADjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:09:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"User data not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						},
+						{
+							"name": "403 - Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": "{{base_url}}/users/1"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "101"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"65-dY84EnEsLWg5PefhJs9/c3Gi+ns\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 02 Nov 2024 08:11:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"Access denied. Insufficient privileges.\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/health-check"
+			},
+			"response": [
+				{
+					"name": "200 - OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/health-check"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "93"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"5d-zS208PU+6KJHAK34g1vapkTc0rM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 09:03:44 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Success\",\n    \"message\": \"Application passed health check\",\n    \"isSuccess\": true,\n    \"data\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "API Not Found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/"
+			},
+			"response": [
+				{
+					"name": "404 - Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{base_url}}/"
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-+p65kW9S9ZbIceMWizps7k81ox8\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 02 Nov 2024 09:04:09 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Failed\",\n    \"message\": \"API not found\",\n    \"isSuccess\": false,\n    \"data\": null\n}"
+				}
+			]
+		}
+	]
+}
