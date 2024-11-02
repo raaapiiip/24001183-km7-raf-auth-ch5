@@ -5,7 +5,7 @@ const authorizeRole = require('../middlewares/authorize');
 
 const router = express.Router();
 
-router.get('', authenticateToken,  authorizeRole('superadmin'), userController.getAllUser);
-router.get('/:id', authenticateToken,  authorizeRole('superadmin'), userController.getUserById);
+router.get('', authenticateToken,  authorizeRole('superadmin', 'admin'), userController.getAllUser);
+router.get('/:id', authenticateToken,  authorizeRole('superadmin', 'admin'), userController.getUserById);
 
 module.exports = router;
