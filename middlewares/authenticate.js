@@ -32,7 +32,7 @@ const authenticateToken = async (req, res, next) => {
   } catch (err) {
     return res.status(500).json({
       status: 'Failed',
-      message: err.message,
+      message: 'Server error',
       isSuccess: false,
       data: null,
     });

@@ -22,7 +22,7 @@ const authorizeRole = (...role) => {
     } catch (err) {
       return res.status(500).json({
         status: 'Failed',
-        message: err.message,
+        message: 'Server error',
         isSuccess: false,
         data: null,
       });
