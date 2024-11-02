@@ -101,25 +101,9 @@ const register = async (req, res) => {
       status: 'Succeed',
       message: 'Member registered successfully',
       isSuccess: true,
-      data: {
-        user: {
-          id: newUser.id,
-          name: newUser.name,
-          email: newUser.email,
-          role: newUser.role,
-        },
-      },
+      data: { user: newUser },
     });
-  } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      return res.status(400).json({
-        status: 'Failed',
-        message: 'Email is already registered',
-        isSuccess: false,
-        data: null,
-      });
-    }
-    
+  } catch (err) {    
     return res.status(500).json({
       status: 'Failed',
       message: 'Server error',
@@ -158,25 +142,9 @@ const addAdmin = async (req, res) => {
       status: 'Succeed',
       message: 'Admin added successfully',
       isSuccess: true,
-      data: {
-        user: {
-          id: newAdmin.id,
-          name: newAdmin.name,
-          email: newAdmin.email,
-          role: newAdmin.role,
-        },
-      },
+      data: { user: newAdmin },
     });
   } catch (err) {
-    if (err.name === 'SequelizeUniqueConstraintError') {
-      return res.status(400).json({
-        status: 'Failed',
-        message: 'Email is already registered',
-        isSuccess: false,
-        data: null,
-      });
-    }
-
     return res.status(500).json({
       status: 'Failed',
       message: 'Server error',

@@ -86,8 +86,8 @@ const createCar = async (req, res) => {
 
   try {
     const uploadedImage = await imagekit.upload({
-      file : file.buffer,
-      fileName : `Car-${filename}-${Date.now()}.${extension}`
+      file: file.buffer,
+      fileName: `Car-${filename}-${Date.now()}.${extension}`,
     });
 
     const newCar = req.body;
@@ -98,7 +98,7 @@ const createCar = async (req, res) => {
         isSuccess: false,
         data: null,
       });
-  }
+    }
 
     await Car.create({ ...newCar, carImage: uploadedImage.url });
 
@@ -134,15 +134,6 @@ const updateCar = async (req, res) => {
       });
     }
 
-    if (req.user.id !== car.createdBy && req.user.role !== 'superadmin') {
-      return res.status(403).json({
-        status: 'Failed',
-        message: 'Not authorized to update this car',
-        isSuccess: false,
-        data: null,
-      });
-    }
-
     await car.update({ brand, model, year, plateNumber, updatedBy: req.user.id });
 
     return res.status(200).json({
@@ -171,15 +162,6 @@ const deleteCar = async (req, res) => {
       return res.status(404).json({
         status: 'Failed',
         message: 'Car data not found',
-        isSuccess: false,
-        data: null,
-      });
-    }
-
-    if (req.user.id !== car.createdBy && req.user.role !== 'superadmin') {
-      return res.status(403).json({
-        status: 'Failed',
-        message: 'Not authorized to delete this car data',
         isSuccess: false,
         data: null,
       });
