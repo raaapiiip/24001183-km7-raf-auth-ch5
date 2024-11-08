@@ -1,72 +1,71 @@
 # Binar Car Rental API (BCR) - Chapter 5 Challenge
 
-This repository contains the backend API for the Binar Car Rental application. The API is developed using Node.js and Express and leverages Sequelize ORM for data management with PostgreSQL. The application includes user authentication, role-based access control, and CRUD operations for managing car data.
+Repository ini berisi API backend untuk aplikasi Binar Car Rental. API ini dikembangkan menggunakan Node.js dan Express serta memanfaatkan Sequelize ORM untuk manajemen data dengan PostgreSQL. Aplikasi ini mencakup autentikasi pengguna, kontrol akses role-based, dan operasi CRUD untuk mengelola data mobil.
 
-## Table of Contents
+## Daftar Isi
 
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Database Setup](#database-setup)
+- [Fitur](#fitur)
+- [Techstack yang Digunakan](#techstack-yang-digunakan)
+- [Inisiasi](#inisiasi)
+  - [Prasyarat](#prasyarat)
+  - [Instalasi](#instalasi)
+  - [Setup Database](#setup-database)
   - [Environment Variables](#environment-variables)
-- [API Documentation](#api-documentation)
+- [Dokumentasi API](#dokumentasi-api)
 
 ---
 
-## Features
+## Fitur
 
-- **User Authentication**: Secure JWT-based authentication for login and registration.
-- **Role-Based Access Control**: Access to certain API endpoints is restricted based on roles (`superadmin`, `admin`, and `member`).
-- **CRUD Operations for Cars**: Allows authorized users to create, update, delete, and retrieve car data.
-- **File Uploads**: Supports image uploads for cars.
-- **Soft Deletion**: Implements soft deletion for car records.
+- **Autentikasi Pengguna**: Autentikasi berbasis JWT yang aman untuk login dan registrasi.
+- **Kontrol Akses Role-Based**: Akses ke beberapa endpoint API dibatasi berdasarkan role (`superadmin`, `admin`, dan `member`).
+- **Operasi CRUD untuk Mobil**: Mengizinkan pengguna terotorisasi untuk membuat, memperbarui, menghapus, dan mengambil data mobil.
+- **Unggah File**: Mendukung unggahan gambar untuk mobil.
 
-## Technologies Used
+## Techstack yang Digunakan
 
 - **Node.js**
 - **Express**
 - **Sequelize ORM** (PostgreSQL)
-- **ImageKit** (for image upload)
-- **JWT** (JSON Web Token) for authentication
-- **Swagger** (API documentation)
+- **ImageKit** (untuk unggah gambar)
+- **JWT** (JSON Web Token) untuk autentikasi
+- **Swagger** (dokumentasi API)
 
 ---
 
-## Getting Started
+## Inisiasi
 
-### Prerequisites
+### Prasyarat
 
-- **Node.js** and **npm**: Make sure Node.js and npm are installed.
-- **PostgreSQL**: Ensure PostgreSQL is installed and running.
+- **Node.js** dan **npm**: Pastikan Node.js dan npm sudah terinstal.
+- **PostgreSQL**: Pastikan PostgreSQL sudah terinstal dan berjalan.
 
-### Installation
+### Instalasi
 
-1. **Clone the repository**:
+1. **Kloning repository**:
 
    ```bash
-   git clone https://github.com/yourusername/binar-car-rental-api.git
+   git clone https://github.com/username-anda/binar-car-rental-api.git
    cd binar-car-rental-api
    ```
 
-2. **Install dependencies**:
+2. **Install dependensi**:
 
    ```bash
    npm install
    ```
 
-### Database Setup
+### Setup Database
 
-1. **Create a PostgreSQL database** for the application.
+1. **Buat database PostgreSQL** untuk aplikasi ini.
 
-2. **Run database migrations**:
+2. **Jalankan migrasi database**:
 
    ```bash
    npx sequelize-cli db:migrate
    ```
 
-3. **Run database seeders** (if available):
+3. **Jalankan seeders database** (jika tersedia):
 
    ```bash
    npx sequelize-cli db:seed:all
@@ -74,62 +73,62 @@ This repository contains the backend API for the Binar Car Rental application. T
 
 ### Environment Variables
 
-Create a `.env` file in the root directory of your project and add the following environment variables:
+Buat file `.env` di direktori root project Anda dan tambahkan environment variables berikut:
 
 ```env
-# Server configuration
+# Konfigurasi server
 PORT=5000
 
 # JWT
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=jwt_secret_anda
 JWT_EXPIRED=1h
 
 # Database (PostgreSQL)
 DB_HOST=localhost
-DB_USER=your_db_user
-DB_PASSWORD=your_db_password
-DB_NAME=your_db_name
+DB_USER=user_database_anda
+DB_PASSWORD=password_database_anda
+DB_NAME=nama_database_anda
 DB_PORT=5432
 
-# ImageKit (for image uploads)
-IMAGEKIT_PUBLIC_KEY=your_public_key
-IMAGEKIT_PRIVATE_KEY=your_private_key
-IMAGEKIT_URL_ENDPOINT=your_url_endpoint
+# ImageKit (untuk unggah gambar)
+IMAGEKIT_PUBLIC_KEY=public_key_anda
+IMAGEKIT_PRIVATE_KEY=private_key_anda
+IMAGEKIT_URL_ENDPOINT=url_endpoint_anda
 ```
 
 ---
 
-## API Documentation
+## Dokumentasi API
 
-The API endpoints are documented using Swagger. Once you start the server, you can access the documentation at:
+Endpoint API didokumentasikan menggunakan Swagger. Setelah Anda menjalankan server, Anda dapat mengakses dokumentasi di:
 
 ```
 http://localhost:5000/api-docs
 ```
 
-### Sample Endpoints
+### Contoh Endpoint
 
-Here are a few key API endpoints. For the complete documentation, refer to the Swagger docs.
+Berikut adalah beberapa endpoint utama API. Untuk dokumentasi lengkap, lihat di Swagger.
 
-#### Authentication
+#### Autentikasi
 
-- **POST** `/auths/login`: User login to obtain JWT token.
-- **POST** `/auths/register`: Register a new user.
+- **POST** `/auths/login`: Login pengguna untuk mendapatkan token JWT.
+- **POST** `/auths/register`: Mendaftarkan pengguna baru.
 
-#### User Management
+#### Manajemen Pengguna
 
-- **POST** `/auths/add-admin`: Add a new admin (requires superadmin privileges).
+- **POST** `/auths/add-admin`: Tambahkan admin baru (hanya untuk superadmin).
 
-#### Car Management
+#### Manajemen Mobil
 
-- **GET** `/cars`: Retrieve all cars (admin and superadmin only).
-- **POST** `/cars`: Add a new car (requires admin or superadmin privileges).
-- **PATCH** `/cars/:id`: Update car data by ID (requires ownership or superadmin privileges).
-- **DELETE** `/cars/:id`: Soft delete car by ID (requires ownership or superadmin privileges).
+- **GET** `/cars`: Mengambil semua mobil (hanya admin dan superadmin).
+- **POST** `/cars`: Menambahkan mobil baru (hanya untuk admin atau superadmin).
+- **PATCH** `/cars/:id`: Memperbarui data mobil berdasarkan ID (hanya pemilik atau superadmin).
+- **DELETE** `/cars/:id`: Menghapus data mobil secara lunak berdasarkan ID (hanya pemilik atau superadmin).
 
-### Error Handling
+### Penanganan Kesalahan
 
-Each endpoint provides standardized error responses for common HTTP status codes:
+Setiap endpoint memberikan respons kesalahan standar untuk kode status HTTP umum:
 
 - `400` Bad Request
 - `401` Unauthorized
@@ -138,9 +137,3 @@ Each endpoint provides standardized error responses for common HTTP status codes
 - `500` Internal Server Error
 
 ---
-
-## Contributing
-
-Pull requests are welcome! For significant changes, please open an issue first to discuss what you would like to change.
-
---- 
