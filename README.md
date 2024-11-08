@@ -64,7 +64,7 @@ Repository ini berisi API backend untuk aplikasi Binar Car Rental. API ini dikem
    npx sequelize-cli db:migrate
    ```
 
-3. **Jalankan seeders database** (jika tersedia):
+3. **Jalankan seeders database**:
 
    ```bash
    npx sequelize-cli db:seed:all
@@ -76,7 +76,7 @@ Buat file `.env` di direktori root project Anda dan tambahkan environment variab
 
 ```env
 # Konfigurasi server
-PORT=5000
+PORT=3000
 
 # JWT
 JWT_SECRET=jwt_secret_anda
@@ -102,7 +102,7 @@ IMAGEKIT_URL_ENDPOINT=url_endpoint_anda
 Endpoint API didokumentasikan menggunakan Swagger. Setelah Anda menjalankan server, Anda dapat mengakses dokumentasi di:
 
 ```
-http://localhost:5000/api-docs
+http://localhost:3000/api-docs
 ```
 
 ### Contoh Endpoint
@@ -113,14 +113,17 @@ Berikut adalah beberapa endpoint utama API. Untuk dokumentasi lengkap, lihat di 
 
 - **POST** `/auths/login`: Login pengguna untuk mendapatkan token JWT.
 - **POST** `/auths/register`: Mendaftarkan pengguna baru.
+- **POST** `/auths/add-admin`: Tambahkan admin baru (hanya untuk superadmin).
 
 #### Manajemen Pengguna
 
-- **POST** `/auths/add-admin`: Tambahkan admin baru (hanya untuk superadmin).
+- **GET** `/users`: Mengambil semua data pengguna (hanya admin dan superadmin).
+- **GET** `/users/:id`: Mengambil data pengguna berdasarkan ID (hanya admin dan superadmin).
 
 #### Manajemen Mobil
 
-- **GET** `/cars`: Mengambil semua mobil (hanya admin dan superadmin).
+- **GET** `/cars`: Mengambil semua data mobil (hanya admin dan superadmin).
+- **GET** `/cars/:id`: Mengambil data mobil berdasarkan ID (hanya admin dan superadmin).
 - **POST** `/cars`: Menambahkan mobil baru (hanya untuk admin atau superadmin).
 - **PATCH** `/cars/:id`: Memperbarui data mobil berdasarkan ID (hanya pemilik atau superadmin).
 - **DELETE** `/cars/:id`: Menghapus data mobil secara lunak berdasarkan ID (hanya pemilik atau superadmin).
