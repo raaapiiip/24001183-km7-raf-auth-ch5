@@ -12,6 +12,13 @@ Repository ini berisi API backend untuk aplikasi Binar Car Rental. API ini dikem
   - [Setup Database](#setup-database)
   - [Environment Variables](#environment-variables)
 - [Dokumentasi API](#dokumentasi-api)
+  - [Contoh Endpoint](#contoh-endpoint)
+  - [Health Check](#health-check)
+  - [Autentikasi](#autentikasi)
+  - [Manajemen Pengguna](#manajemen-pengguna)
+  - [Manajemen Mobil](#manajemen-mobil)
+  - [Penanganan Kesalahan](#penanganan-kesalahan)
+- [Super Admin Account](#super-admin-account)
 
 ---
 
@@ -102,12 +109,16 @@ IMAGEKIT_URL_ENDPOINT=url_endpoint_anda
 Endpoint API didokumentasikan menggunakan Swagger. Setelah Anda menjalankan server, Anda dapat mengakses dokumentasi di:
 
 ```
-http://localhost:3000/api-docs
+http://localhost:3000/api/v1/docs
 ```
 
 ### Contoh Endpoint
 
-Berikut adalah beberapa endpoint utama API. Untuk dokumentasi lengkap, lihat di Swagger.
+Berikut adalah beberapa endpoint utama API (http://localhost:3000/api/v1/...). Untuk dokumentasi lengkap, lihat di Swagger.
+
+#### Health Check
+
+- **GET** `/health-check`: Memeriksa status kesehatan aplikasi.
 
 #### Autentikasi
 
@@ -117,14 +128,14 @@ Berikut adalah beberapa endpoint utama API. Untuk dokumentasi lengkap, lihat di 
 
 #### Manajemen Pengguna
 
-- **GET** `/users`: Mengambil semua data pengguna (hanya admin dan superadmin).
-- **GET** `/users/:id`: Mengambil data pengguna berdasarkan ID (hanya admin dan superadmin).
+- **GET** `/users`: Mengambil semua data pengguna (hanya untuk admin dan superadmin).
+- **GET** `/users/:id`: Mengambil data pengguna berdasarkan ID (hanya untuk admin dan superadmin).
 
 #### Manajemen Mobil
 
-- **GET** `/cars`: Mengambil semua data mobil (hanya admin dan superadmin).
-- **GET** `/cars/:id`: Mengambil data mobil berdasarkan ID (hanya admin dan superadmin).
-- **POST** `/cars`: Menambahkan mobil baru (hanya untuk admin atau superadmin).
+- **GET** `/cars`: Mengambil semua data mobil (hanya untuk admin dan superadmin).
+- **GET** `/cars/:id`: Mengambil data mobil berdasarkan ID (hanya untuk admin dan superadmin).
+- **POST** `/cars`: Menambahkan mobil baru (hanya untuk admin dan superadmin).
 - **PATCH** `/cars/:id`: Memperbarui data mobil berdasarkan ID (hanya untuk superadmin).
 - **DELETE** `/cars/:id`: Menghapus data mobil secara lunak berdasarkan ID (hanya untuk superadmin).
 
@@ -137,5 +148,12 @@ Setiap endpoint memberikan respons kesalahan standar untuk kode status HTTP umum
 - `403` Forbidden
 - `404` Not Found
 - `500` Internal Server Error
+
+---
+
+## Super Admin Account
+
+Email: rafif@mail.com<br>
+Password: punyasiapa
 
 ---
