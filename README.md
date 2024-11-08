@@ -45,7 +45,7 @@ Repository ini berisi API backend untuk aplikasi Binar Car Rental. API ini dikem
 1. **Kloning repository**:
 
    ```bash
-   git clone https://github.com/username-anda/binar-car-rental-api.git
+   git clone https://github.com/raaapiiip/binar-car-rental-api.git
    cd binar-car-rental-api
    ```
 
