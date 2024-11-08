@@ -125,8 +125,8 @@ Berikut adalah beberapa endpoint utama API. Untuk dokumentasi lengkap, lihat di 
 - **GET** `/cars`: Mengambil semua data mobil (hanya admin dan superadmin).
 - **GET** `/cars/:id`: Mengambil data mobil berdasarkan ID (hanya admin dan superadmin).
 - **POST** `/cars`: Menambahkan mobil baru (hanya untuk admin atau superadmin).
-- **PATCH** `/cars/:id`: Memperbarui data mobil berdasarkan ID (hanya pemilik atau superadmin).
-- **DELETE** `/cars/:id`: Menghapus data mobil secara lunak berdasarkan ID (hanya pemilik atau superadmin).
+- **PATCH** `/cars/:id`: Memperbarui data mobil berdasarkan ID (hanya untuk superadmin).
+- **DELETE** `/cars/:id`: Menghapus data mobil secara lunak berdasarkan ID (hanya untuk superadmin).
 
 ### Penanganan Kesalahan
 
