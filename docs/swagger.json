@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "{{base_url}}",
+      "url": "/api/v1",
       "description": "Base URL for the API"
     }
   ],
@@ -24,7 +24,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": { "type": "string", "example": "membertony@mail.com" },
+                  "email": {
+                    "type": "string",
+                    "example": "rafif@mail.com"
+                  },
                   "password": { "type": "string", "example": "punyasiapa" }
                 },
                 "required": ["email", "password"]
@@ -41,7 +44,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Login successful" },
+                    "message": {
+                      "type": "string",
+                      "example": "Login successful"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -50,12 +56,24 @@
                           "type": "object",
                           "properties": {
                             "id": { "type": "integer", "example": 1 },
-                            "name": { "type": "string", "example": "Muhammad Rafif Ramadhansyah" },
-                            "email": { "type": "string", "example": "rafif@mail.com" },
-                            "role": { "type": "string", "example": "superadmin" }
+                            "name": {
+                              "type": "string",
+                              "example": "Muhammad Rafif Ramadhansyah"
+                            },
+                            "email": {
+                              "type": "string",
+                              "example": "rafif@mail.com"
+                            },
+                            "role": {
+                              "type": "string",
+                              "example": "superadmin"
+                            }
                           }
                         },
-                        "token": { "type": "string", "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+                        "token": {
+                          "type": "string",
+                          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                        }
                       }
                     }
                   }
@@ -71,7 +89,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Email and password are required" },
+                    "message": {
+                      "type": "string",
+                      "example": "Email and password are required"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -87,7 +108,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "User not found" },
+                    "message": {
+                      "type": "string",
+                      "example": "User not found"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -110,8 +134,14 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": { "type": "string", "example": "farrelkeriting@mail.com" },
-                  "password": { "type": "string", "example": "farrelkeriting123" },
+                  "email": {
+                    "type": "string",
+                    "example": "farrelkeriting@mail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "farrelkeriting123"
+                  },
                   "name": { "type": "string", "example": "Farrel" },
                   "address": { "type": "string", "example": "Borneo" },
                   "phoneNumber": { "type": "integer", "example": 1234567890 }
@@ -130,7 +160,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Member registered successfully" },
+                    "message": {
+                      "type": "string",
+                      "example": "Member registered successfully"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -140,9 +173,15 @@
                           "properties": {
                             "id": { "type": "integer", "example": 13 },
                             "name": { "type": "string", "example": "Farrel" },
-                            "email": { "type": "string", "example": "farrelkeriting@mail.com" },
+                            "email": {
+                              "type": "string",
+                              "example": "farrelkeriting@mail.com"
+                            },
                             "role": { "type": "string", "example": "member" },
-                            "createdAt": { "type": "string", "example": "2024-11-02T04:56:44.422Z" }
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2024-11-02T04:56:44.422Z"
+                            }
                           }
                         }
                       }
@@ -160,7 +199,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Email is already in use" },
+                    "message": {
+                      "type": "string",
+                      "example": "Email is already in use"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -176,6 +218,7 @@
         "summary": "Add Admin",
         "description": "Add a new admin account. Requires an authorization token.",
         "tags": ["Auths"],
+        "security": [{ "BearerAuth": [] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -183,7 +226,10 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": { "type": "string", "example": "antonygasing@mail.com" },
+                  "email": {
+                    "type": "string",
+                    "example": "antonygasing@mail.com"
+                  },
                   "password": { "type": "string", "example": "kelok100juta" },
                   "name": { "type": "string", "example": "Antony" },
                   "address": { "type": "string", "example": "Manchester" },
@@ -203,7 +249,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Admin added successfully" },
+                    "message": {
+                      "type": "string",
+                      "example": "Admin added successfully"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -213,9 +262,15 @@
                           "properties": {
                             "id": { "type": "integer", "example": 12 },
                             "name": { "type": "string", "example": "Antony" },
-                            "email": { "type": "string", "example": "antonygasing@mail.com" },
+                            "email": {
+                              "type": "string",
+                              "example": "antonygasing@mail.com"
+                            },
                             "role": { "type": "string", "example": "admin" },
-                            "createdAt": { "type": "string", "example": "2024-11-02T04:55:32.030Z" }
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2024-11-02T04:55:32.030Z"
+                            }
                           }
                         }
                       }
@@ -233,7 +288,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Email is already in use" },
+                    "message": {
+                      "type": "string",
+                      "example": "Email is already in use"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -249,7 +307,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Access denied. Insufficient privileges." },
+                    "message": {
+                      "type": "string",
+                      "example": "Access denied. Insufficient privileges."
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -265,15 +326,7 @@
         "summary": "Get All Cars",
         "description": "Retrieve a list of all available cars.",
         "tags": ["Cars"],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
-          }
-        ],
+        "security": [{ "BearerAuth": [] }],
         "responses": {
           "200": {
             "description": "Success - List of cars",
@@ -283,7 +336,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Success to get all car data" },
+                    "message": {
+                      "type": "string",
+                      "example": "Success to get all car data"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -294,10 +350,19 @@
                             "type": "object",
                             "properties": {
                               "id": { "type": "integer", "example": 1 },
-                              "brand": { "type": "string", "example": "Mercedes Benz" },
-                              "model": { "type": "string", "example": "Grand Cherokee" },
+                              "brand": {
+                                "type": "string",
+                                "example": "Mercedes Benz"
+                              },
+                              "model": {
+                                "type": "string",
+                                "example": "Grand Cherokee"
+                              },
                               "year": { "type": "integer", "example": 2024 },
-                              "plateNumber": { "type": "string", "example": "CR54QBO" },
+                              "plateNumber": {
+                                "type": "string",
+                                "example": "CR54QBO"
+                              },
                               "price": { "type": "integer", "example": 41281 }
                             }
                           }
@@ -317,7 +382,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Access denied. No token provided." },
+                    "message": {
+                      "type": "string",
+                      "example": "Access denied. No token provided."
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -331,15 +399,7 @@
         "summary": "Create Car",
         "description": "Create a new car entry.",
         "tags": ["Cars"],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
-          }
-        ],
+        "security": [{ "BearerAuth": [] }],
         "requestBody": {
           "required": true,
           "content": {
@@ -354,7 +414,14 @@
                   "price": { "type": "integer", "example": 50000 },
                   "carImage": { "type": "string", "format": "binary" }
                 },
-                "required": ["brand", "model", "year", "plateNumber", "price", "carImage"]
+                "required": [
+                  "brand",
+                  "model",
+                  "year",
+                  "plateNumber",
+                  "price",
+                  "carImage"
+                ]
               }
             }
           }
@@ -368,7 +435,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Car created successfully" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car created successfully"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -377,7 +447,10 @@
                         "brand": { "type": "string", "example": "Tesla" },
                         "model": { "type": "string", "example": "Model 3" },
                         "year": { "type": "integer", "example": 2023 },
-                        "plateNumber": { "type": "string", "example": "ABC123" },
+                        "plateNumber": {
+                          "type": "string",
+                          "example": "ABC123"
+                        },
                         "price": { "type": "integer", "example": 50000 }
                       }
                     }
@@ -394,6 +467,7 @@
         "summary": "Get Car by ID",
         "description": "Retrieve a specific car by its ID.",
         "tags": ["Cars"],
+        "security": [{ "BearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -401,13 +475,6 @@
             "required": true,
             "schema": { "type": "integer" },
             "example": 2
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
           }
         ],
         "responses": {
@@ -419,7 +486,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Success to get car data by id" },
+                    "message": {
+                      "type": "string",
+                      "example": "Success to get car data by id"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
@@ -428,7 +498,10 @@
                         "brand": { "type": "string", "example": "MG" },
                         "model": { "type": "string", "example": "XC90" },
                         "year": { "type": "integer", "example": 2024 },
-                        "plateNumber": { "type": "string", "example": "ZI77BOX" },
+                        "plateNumber": {
+                          "type": "string",
+                          "example": "ZI77BOX"
+                        },
                         "price": { "type": "integer", "example": 31684 }
                       }
                     }
@@ -445,7 +518,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Car data not found" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car data not found"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -459,6 +535,7 @@
         "summary": "Update Car",
         "description": "Update details of a specific car by ID.",
         "tags": ["Cars"],
+        "security": [{ "BearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -466,13 +543,6 @@
             "required": true,
             "schema": { "type": "integer" },
             "example": 2
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
           }
         ],
         "requestBody": {
@@ -501,7 +571,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Car updated successfully" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car updated successfully"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": { "type": "null" }
                   }
@@ -517,7 +590,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Car data not found" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car data not found"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -531,6 +607,7 @@
         "summary": "Delete Car",
         "description": "Delete a specific car by ID.",
         "tags": ["Cars"],
+        "security": [{ "BearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -538,13 +615,6 @@
             "required": true,
             "schema": { "type": "integer" },
             "example": 2
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
           }
         ],
         "responses": {
@@ -556,7 +626,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Car deleted successfully" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car deleted successfully"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": { "type": "null" }
                   }
@@ -572,7 +645,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Car data not found" },
+                    "message": {
+                      "type": "string",
+                      "example": "Car data not found"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -588,15 +664,7 @@
         "summary": "Get All Users",
         "description": "Retrieve a list of all users.",
         "tags": ["Users"],
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
-          }
-        ],
+        "security": [{ "BearerAuth": [] }],
         "responses": {
           "200": {
             "description": "Success - List of users",
@@ -606,7 +674,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Success to get all users data" },
+                    "message": {
+                      "type": "string",
+                      "example": "Success to get all users data"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "array",
@@ -614,8 +685,14 @@
                         "type": "object",
                         "properties": {
                           "id": { "type": "integer", "example": 1 },
-                          "name": { "type": "string", "example": "Muhammad Rafif Ramadhansyah" },
-                          "email": { "type": "string", "example": "rafif@mail.com" },
+                          "name": {
+                            "type": "string",
+                            "example": "Muhammad Rafif Ramadhansyah"
+                          },
+                          "email": {
+                            "type": "string",
+                            "example": "rafif@mail.com"
+                          },
                           "role": { "type": "string", "example": "superadmin" }
                         }
                       }
@@ -633,7 +710,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Access denied. No token provided." },
+                    "message": {
+                      "type": "string",
+                      "example": "Access denied. No token provided."
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -649,6 +729,7 @@
         "summary": "Get User by ID",
         "description": "Retrieve a specific user by their ID.",
         "tags": ["Users"],
+        "security": [{ "BearerAuth": [] }],
         "parameters": [
           {
             "name": "id",
@@ -656,13 +737,6 @@
             "required": true,
             "schema": { "type": "integer" },
             "example": 1
-          },
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": { "type": "string" },
-            "example": "Bearer {{token}}"
           }
         ],
         "responses": {
@@ -674,14 +748,23 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Succeed" },
-                    "message": { "type": "string", "example": "Success to get user data by id" },
+                    "message": {
+                      "type": "string",
+                      "example": "Success to get user data by id"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": {
                       "type": "object",
                       "properties": {
                         "id": { "type": "integer", "example": 1 },
-                        "name": { "type": "string", "example": "Muhammad Rafif Ramadhansyah" },
-                        "email": { "type": "string", "example": "rafif@mail.com" },
+                        "name": {
+                          "type": "string",
+                          "example": "Muhammad Rafif Ramadhansyah"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "rafif@mail.com"
+                        },
                         "role": { "type": "string", "example": "superadmin" }
                       }
                     }
@@ -698,7 +781,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "User data not found" },
+                    "message": {
+                      "type": "string",
+                      "example": "User data not found"
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -714,7 +800,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Failed" },
-                    "message": { "type": "string", "example": "Access denied. No token provided." },
+                    "message": {
+                      "type": "string",
+                      "example": "Access denied. No token provided."
+                    },
                     "isSuccess": { "type": "boolean", "example": false },
                     "data": { "type": "null" }
                   }
@@ -739,7 +828,10 @@
                   "type": "object",
                   "properties": {
                     "status": { "type": "string", "example": "Success" },
-                    "message": { "type": "string", "example": "Application passed health check" },
+                    "message": {
+                      "type": "string",
+                      "example": "Application passed health check"
+                    },
                     "isSuccess": { "type": "boolean", "example": true },
                     "data": { "type": "null" }
                   }
@@ -773,6 +865,15 @@
             }
           }
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
